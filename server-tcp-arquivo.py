@@ -8,11 +8,13 @@ orig = (HOST, PORT)
 tcp.bind(orig)
 tcp.listen(1)
 
+i = 1
+
 while True:
-    i == 1
     con, cliente = tcp.accept()
     print('Concetado por', cliente)
-    with open(f'arquivo-recebido{i}', 'wb') as arquivo:
+    file_name = "arquivo-" + str(i) + "-recebido"
+    with open(file_name, 'wb') as arquivo:
         while True:
             dados = con.recv(1024)
             if not dados:
