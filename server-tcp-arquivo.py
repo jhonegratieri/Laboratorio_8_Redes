@@ -9,13 +9,15 @@ tcp.bind(orig)
 tcp.listen(1)
 
 while True:
+    i == 1
     con, cliente = tcp.accept()
     print('Concetado por', cliente)
-    with open('arquivo-recebido', 'wb') as arquivo:
+    with open(f'arquivo-recebido{i}', 'wb') as arquivo:
         while True:
             dados = con.recv(1024)
             if not dados:
                 break
             arquivo.write(dados)
     print('Salvo com sucesso!')
+    i += 1;
     con.close()
